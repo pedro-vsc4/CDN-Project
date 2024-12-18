@@ -19,10 +19,27 @@ jobs:
           username: pedrovsc4
           password: Boavista3@
 
-      - name: Build Docker Image
+      - name: Build User Service Docker Image
         run: |
-          docker build -t pedrovsc4/${{ github.event.repository.name }}:latest .
+          docker build -t pedrovsc4/user-service-repo:latest ./services/user-service
 
-      - name: Push Docker Image to Docker Hub
+      - name: Push User Service Docker Image to Docker Hub
         run: |
-          docker push pedrovsc4/${{ github.event.repository.name }}:latest
+          docker push pedrovsc4/user-service-repo:latest
+
+      - name: Build Order Service Docker Image
+        run: |
+          docker build -t pedrovsc4/order-service-repo:latest ./services/order-service
+
+      - name: Push Order Service Docker Image to Docker Hub
+        run: |
+          docker push pedrovsc4/order-service-repo:latest
+
+      - name: Build Product Service Docker Image
+        run: |
+          docker build -t pedrovsc4/product-service-repo:latest ./services/product-service
+
+      - name: Push Product Service Docker Image to Docker Hub
+        run: |
+          docker push pedrovsc4/product-service-repo:latest
+
